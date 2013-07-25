@@ -41,6 +41,7 @@ class Recipe(object):
             options.setdefault('extra-paths', options.get('pythonpath', ''))
 
         options.setdefault('initialization', '')
+        options.setdefault('deploy_script_extra', '')
 
         # mod_wsgi support script
         options.setdefault('wsgi', 'false')
@@ -160,7 +161,8 @@ class Recipe(object):
         for protocol in ('wsgi', 'fcgi'):
             zc.buildout.easy_install.script_template = \
                 zc.buildout.easy_install.script_header + \
-                    script_template[protocol]
+                    script_template[protocol] + \
+                        self.options['deploy_script_extra']
             if self.options.get(protocol, '').lower() == 'true':
                 project = self.options.get('projectegg',
                                            self.options['project'])
