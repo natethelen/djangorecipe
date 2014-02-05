@@ -89,6 +89,11 @@ wsgilog
   you can set this variable to a filesystem path - all stdout/stderr data
   is redirected to the log instead of printed
 
+deploy_script_extra
+  For `wsgi` deployment scripts, allow extra content to be appended
+  to the output files. This can be useful when wrapping the application
+  with a service such as New Relic.
+
 test
   If you want a script in the bin folder to run all the tests for a
   specific set of apps this is the option you would use. Set this to
